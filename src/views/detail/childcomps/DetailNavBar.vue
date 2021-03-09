@@ -33,8 +33,9 @@
     },
     methods: {
       itemClick(index) {
-        // console.log(index);
-        this.currentIndex = index
+        this.currentIndex = index;
+        //将索引传递到detail页面
+        this.$emit('titleClick',index)
       },
       backClick() {
         // console.log('返回');

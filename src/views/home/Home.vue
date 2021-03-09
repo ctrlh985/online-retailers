@@ -133,7 +133,7 @@
       contentScroll(position) {
         //将当前滚动位置的y坐标与1000比较，并将返回的boolean赋值给isShowBackTop
         this.isShowBackTop = (-position.y > 1000)
-        //
+        // console.log(-position.y)
         this.isTabFixed = (-position.y) > this.tabOffsetTop
 
       },
@@ -184,7 +184,8 @@
 
   .home-nav {
     background-color: var(--color-tint);
-    color: yellow;
+    color: #fff;
+    font-weight: bold;
     /*开启固定定位*/
     /*网页原生滚动的时候为了让它固定，而使用fixed定位，而现在使用的是better-scroll局部滚动则不需要*/
     /*position: fixed;*/
