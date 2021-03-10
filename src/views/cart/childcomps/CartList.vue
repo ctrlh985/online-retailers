@@ -22,6 +22,7 @@
       //cartList为购物车里的商品，状态为数组
       ...mapGetters(['cartList'])
     },
+
     activated() {
       this.$refs.scroll.refresh()
     }

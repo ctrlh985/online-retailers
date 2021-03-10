@@ -34,9 +34,11 @@
       //计算已选中的商品个数
       checkLength() {
         return this.cartList.filter(item => {
+          //返回的是true的item
           return item.select
         }).length
       },
+      //全选与全不选
       selectAll() {
         //取反的原因是当过滤出没被选中的，如果存在没被选中的则会返回false，所以要取反
         if (this.cartList.length === 0) return false;

@@ -183,8 +183,7 @@
   }
 
   .home-nav {
-    background-color: var(--color-tint);
-    color: #fff;
+    /*background-color: var(--color-tint);*/
     font-weight: bold;
     /*开启固定定位*/
     /*网页原生滚动的时候为了让它固定，而使用fixed定位，而现在使用的是better-scroll局部滚动则不需要*/

@@ -1,153 +1,62 @@
 <template>
-  <div class="wrapper">
-    <scroll class="content"
-            :probe-type="0"
-            :pull-up-load="true">
-      <ul>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-        <li>分类列表</li>
-      </ul>
-    </scroll>
-
+  <div id="category">
+    <nav-bar class="nav-bar">
+      <div slot="center">商品分类</div>
+      <div slot="right" style="text-align: center"><img src="~assets/img/common/message.svg"></div>
+    </nav-bar>
+    <category-content :title-list="titleList" :title-content="titleContent" @getTitleCategory="getTitleCategory"/>
   </div>
 
 </template>
 
 <script>
-  import Scroll from "components/common/scroll/Scroll";
+  import NavBar from "components/common/navbar/NavBar";
+  import CategoryContent from "./childcomps/CategoryContent";
+  import {getCategory,getSubCategory} from "network/category";
   export default {
     name: "Category",
     components: {
-      Scroll
+      NavBar,
+      CategoryContent,
     },
-    // data() {
-    //   return {
-    //     scroll: null
-    //   }
-    // },
-    // mounted() {
-    //   this.scroll = new BScroll(document.querySelector('.wrapper'),{
-    //     // probeType: 3,
-    //     // pullUpLoad: true
-    //   });
-      //监听滚动的位置
-      // this.scroll.on('scroll',(position) => {
-      //   // console.log(position);
-      // });
-      // this.scroll.on('pullingUp', () => {
-      //   console.log('上拉加载更多');
-      // })
-    // }
+    data() {
+      return {
+        //分类标题
+        titleList: null,
+        //分类内容
+        titleContent: null
+      }
+    },
+    created() {
+      //获取分类数据
+      getCategory().then(res => {
+        this.titleList = res.data.category.list
+        // console.log(this.titleList)
+        getSubCategory(this.titleList[0].maitKey).then(res => {
+          this.titleContent = res.data.list
+          // console.log(this.titleContent)
+        })
+      })
+    },
+    methods: {
+      //点击不同标题切换不同内容
+      getTitleCategory(index) {
+        getSubCategory(this.titleList[index].maitKey).then( res => {
+          // console.log(res);
+          this.titleContent = res.data.list
+        })
+      }
+    }
   }
 </script>
 
 <style scoped>
-  /*.wrapper {*/
-  /*  height: 150px;*/
-  /*  background-color: red;*/
-  /*  overflow: hidden;*/
-  /*}*/
-  .content {
-    height: 150px;
-    overflow: hidden;
-    background-color: #ff5777;
+  #category {
+    height: 100vh;
+    position: relative;
   }
+  .nav-bar {
+    font-weight: bold;
+  }
+
 </style>

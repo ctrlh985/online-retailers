@@ -3,7 +3,7 @@
     <!--顶部导航栏-->
     <nav-bar class="nav-bar">
       <div slot="center">购物车({{length}})</div>
-      <div slot="right">管理</div>
+      <div slot="right" @click="manageClick">管理</div>
     </nav-bar>
     <!--商品列表滚动-->
     <cart-list/>
@@ -28,7 +28,7 @@
     },
     computed: {
       // CartCount() {
-        // return this.$Cstore.state.cartList.length
+        // return this.$store.state.cartList.length
         // return this.$store.getters.cartLength
       // }
       //mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
@@ -37,8 +37,12 @@
       ...mapGetters({
         length: 'cartLength'
       })
+    },
+    methods: {
+      manageClick() {
+        console.log('----');
+      }
     }
-
   }
 </script>
 

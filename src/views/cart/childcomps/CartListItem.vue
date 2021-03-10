@@ -6,7 +6,7 @@
     <div class="center">
       <img :src="product.image" alt="">
     </div>
-    <div class="right">
+    <div class="right" @click="cartItemClick">
       <div class="item-title">{{product.title}}</div>
       <div class="item-desc">{{product.desc}}</div>
       <div class="bottom">
@@ -29,7 +29,7 @@
       return {
       }
     },
-    //从商品详情页获取produce
+    //获取product父组件Cartlist传递的数据
     props: {
       product: {
         type: Object,
@@ -48,11 +48,17 @@
       })
     },
     methods: {
+      //选中商品进行结算
       changed() {
         // console.log('----');
         this.cartList[this.index].select =! this.cartList[this.index].select
         // this.product.select =! this.product.select
         // console.log(this.cartList[this.index].select);
+      },
+      //跳转到详情页
+      cartItemClick() {
+        // console.log('跳转详情页');
+        this.$router.push('/detail/' + this.product.iid)
       }
     }
   }
