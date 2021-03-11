@@ -1,25 +1,29 @@
 <template>
   <div id="profile">
-    <nav-bar class="profile-nav">
-      <div slot="center">个人中心</div>
-    </nav-bar>
+    <ProfileTop/>
+    <profile-center/>
+    <my-pay/>
   </div>
 </template>
 
 <script>
-  import NavBar from "components/common/navbar/NavBar";
+  import ProfileTop from "./childcomps/ProfileTop";
+  import ProfileCenter from "./childcomps/ProfileCenter";
+  import MyPay from "./childcomps/MyPay";
   export default {
     name: "Profile",
     components: {
-      NavBar
+      ProfileTop,
+      ProfileCenter,
+      MyPay
+    },
+    methods: {
     }
   }
 </script>
 
 <style scoped>
-  .profile-nav {
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
+  #profile {
+    height: 100vh;
   }
 </style>

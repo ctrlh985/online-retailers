@@ -7,7 +7,10 @@ import getters from "./getters";
 Vue.use(Vuex)
 //2.创建store对象
 const state = {
-  cartList: []
+  //购物车数组
+  cartList: [],
+  //收藏商品数组
+  favorList: []
 };
 const store = new Vuex.Store({
   state,

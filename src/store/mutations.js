@@ -1,4 +1,4 @@
-import {ADD_COUNTER,ADD_TO_CART} from "./mutattions-types";
+import {ADD_COUNTER,ADD_TO_CART,ADD_TO_FAVOR} from "./mutattions-types";
 export default {
   //mutation唯一的目的就是修改state中的状态
   //mutation中的每个方法尽可能完成比较单一的事件，所以添加购物车的实现不合适在这处理
@@ -11,5 +11,9 @@ export default {
   [ADD_TO_CART](state,payload) {
     payload.count = 1
     state.cartList.push(payload)
+  },
+  [ADD_TO_FAVOR](state,payload) {
+    payload.count = 1
+
   }
 }

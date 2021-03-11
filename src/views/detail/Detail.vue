@@ -14,7 +14,7 @@
       <goods-list ref="recommend" :goods="recommends"/>
     </scroll>
     //详情页底部导航栏
-    <detail-button-bar @addCart="addToCart"/>
+    <detail-button-bar @addCart="addToCart" @addShoucang="addToShouCang"/>
    <back-top v-show="isShowBackTop" @click.native="backClick"/>
   </div>
 </template>
@@ -65,7 +65,7 @@
       this.iid = this.$route.params.iid;
       //发送网络请求获取商品详细数据
       getDetail(this.iid).then(res => {
-        console.log(res);
+        // console.log(res);
         const data = res.result;
         //获取商品轮播图片
         this.topImages = data.itemInfo.topImages;
@@ -114,7 +114,7 @@
       DetailButtonBar,
     },
     methods: {
-      ...mapActions(['addCart']),
+      ...mapActions(['addCart','addSC']),
       //图片加载
       imageLoad() {
         this.$refs.scroll.refresh();
@@ -164,6 +164,7 @@
       backClick() {
         this.$refs.scroll.scrollTo(0,0)
       },
+      //添加购物车
       addToCart() {
         //1.获取购物车需要的商品信息
         let product = {};
@@ -181,6 +182,14 @@
         // this.$store.dispatch('addCart',product)
         this.addCart(product).then(res => {
           // console.log(this.$toast);
+          this.$toast.show(res,1500)
+        })
+      },
+      addToShouCang() {
+        let shoucang = {}
+        shoucang.id = this.goods.iid
+        console.log('---');
+        this.addSC(shoucang).then(res => {
           this.$toast.show(res,1500)
         })
       }

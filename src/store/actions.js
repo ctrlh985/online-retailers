@@ -1,4 +1,4 @@
-import {ADD_COUNTER, ADD_TO_CART} from "./mutattions-types";
+import {ADD_COUNTER, ADD_TO_CART, ADD_TO_FAVOR} from "./mutattions-types";
 
 export default {
   addCart(context,payload) {
@@ -34,7 +34,11 @@ export default {
         resolve('成功加入购物车！')
       }
     }))
-
-
+  },
+  addSC(context,payload) {
+    return new Promise(((resolve, reject) => {
+      context.commit(ADD_TO_FAVOR,payload)
+      resolve('成功加入收藏！')
+    }))
   }
 }

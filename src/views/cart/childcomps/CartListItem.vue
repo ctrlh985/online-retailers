@@ -87,7 +87,7 @@
   }
   .item-title {
     font-size: 15px;
-    color: deeppink;
+    color: orangered;
     margin-top: 3px;
   }
   .item-desc {
@@ -102,7 +102,7 @@
     margin-top: 20px;
   }
   .bottom .item-price {
-    color: deeppink;
+    color: orangered;
   }
   .bottom .item-count {
     border: 1px solid ;

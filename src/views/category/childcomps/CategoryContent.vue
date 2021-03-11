@@ -1,7 +1,9 @@
 <template>
   <div id="category-content">
     <scroll class="scroll-left" ref="scroll">
-      <category-title v-for="(item,index) in titleList" :items="item" :key="index" :class="{active: currentIndex === index}" @click.native="titleControl(index)"/>
+      <category-title v-for="(item,index) in titleList" :items="item" :key="index"
+                      :class="{active: currentIndex === index}"
+                      @click.native="titleControl(index)"/>
     </scroll>
     <scroll class="content" ref="scroll">
       <category-item class="category-right">

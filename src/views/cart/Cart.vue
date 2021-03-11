@@ -48,8 +48,6 @@
 
 <style scoped>
   .nav-bar {
-    background-color: var(--color-tint);
-    color: #ffffff;
     font-weight: bold;
   }
   #cart {

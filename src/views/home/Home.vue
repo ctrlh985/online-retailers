@@ -1,7 +1,9 @@
 <template>
   <div id="home" class="wrapper">
     <nav-bar class="home-nav">
+      <div slot="left" class="position-img"><img src="~assets/img/common/location.svg"></div>
       <div slot="center">Ctrl商城</div>
+      <div slot="right" class="position-img"><img src="~assets/img/common/search.svg"></div>
     </nav-bar>
     <tab-ctrl :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabCtrl1"
               class="tab-ctrl" v-show="isTabFixed"/>
@@ -209,7 +211,9 @@
     z-index: 9;
     top: -1px;
   }
-
+  .position-img {
+    margin-top: 3px;
+  }
 
   /*利用计算设置scroll滚动窗口的高度*/
   /*.content {*/

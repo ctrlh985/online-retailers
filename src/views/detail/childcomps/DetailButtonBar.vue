@@ -9,7 +9,7 @@
         <img class="img" src="~assets/img/detail/mall.svg">
         <span class="text">店铺</span>
       </div>
-      <div class="favor">
+      <div class="favor" @click="addToShouCang">
         <img class="img" src="~assets/img/detail/favor.svg">
         <span class="text">收藏</span>
       </div>
@@ -29,6 +29,10 @@
         //将点击添加到购物车弹射到detail页面上
         this.$emit('addCart')
         // console.log("点击添加到购物车");
+      },
+      addToShouCang() {
+        // console.log('----')
+        this.$emit('addShoucang')
       }
     }
 

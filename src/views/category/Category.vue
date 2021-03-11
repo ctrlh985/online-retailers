@@ -2,7 +2,7 @@
   <div id="category">
     <nav-bar class="nav-bar">
       <div slot="center">商品分类</div>
-      <div slot="right" style="text-align: center"><img src="~assets/img/common/message.svg"></div>
+      <div slot="right" class="right-img"><img src="~assets/img/common/message.svg"></div>
     </nav-bar>
     <category-content :title-list="titleList" :title-content="titleContent" @getTitleCategory="getTitleCategory"/>
   </div>
@@ -57,6 +57,9 @@
   }
   .nav-bar {
     font-weight: bold;
+  }
+  .right-img {
+    margin-top: 3px;
   }
 
 </style>
