@@ -1,9 +1,9 @@
 <template>
   <div class="profileTop">
-    <div class="top">
+    <div class="top" @click="loginClick">
       <div class="left">
         <img src="~assets/img/profile/user.svg">
-        <div class="login" @click="loginClick">登录/注册></div>
+        <div class="login">登录/注册></div>
       </div>
       <div class="right">
         <img src="~assets/img/profile/friend_add.svg">
@@ -11,7 +11,7 @@
         <img src="~assets/img/profile/message_light.svg">
       </div>
     </div>
-    <div class="bottom">
+    <div class="bottom" @click="loginClick">
       <div>
       <img src="~assets/img/profile/favor.svg">
       <p>商品收藏</p>
@@ -38,7 +38,7 @@
     methods: {
       loginClick() {
         // console.log('---')
-        this.$toast.show("客观别急，程序小哥正在快马加鞭地开发中",1500)
+        this.$toast.show("客观别急，码农小湖正在快马加鞭地开发中",1500)
       }
     }
   }

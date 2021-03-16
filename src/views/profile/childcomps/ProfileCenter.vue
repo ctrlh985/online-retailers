@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-center">
+  <div class="profile-center" @click="tipsClick">
     <div>
       <img src="~assets/img/profile/pay.svg">
       <p>待付款</p>
@@ -25,7 +25,12 @@
 
 <script>
   export default {
-    name: "ProfileCenter"
+    name: "ProfileCenter",
+    methods: {
+      tipsClick() {
+        this.$toast.show("客观别急，码农小湖正在快马加鞭地开发中",1500)
+      }
+    }
   }
 </script>
 

@@ -186,10 +186,13 @@
         })
       },
       addToShouCang() {
-        let shoucang = {}
-        shoucang.id = this.goods.iid
+        let product = {}
+        product.iid = this.iid
+        product.img = this.topImages[0]
+        product.title = this.goods.title
+        product.price = this.goods.realPrice
         console.log('---');
-        this.addSC(shoucang).then(res => {
+        this.addSC(product).then(res => {
           this.$toast.show(res,1500)
         })
       }

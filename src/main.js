@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-//扫入toast插件
+//导入toast插件
 import toast from "./components/content/toast";
 //解决移动端点击300毫秒延迟
 import FastClick from 'fastclick'

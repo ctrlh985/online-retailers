@@ -1,5 +1,5 @@
 <template>
-  <div class="myPay">
+  <div class="myPay" @click="tipsClick">
     <div>
       <img src="~assets/img/profile/jifen.svg">
       <p>积分</p>
@@ -25,7 +25,12 @@
 
 <script>
   export default {
-    name: "MyPay"
+    name: "MyPay",
+    methods: {
+      tipsClick() {
+        this.$toast.show("客观别急，码农小湖正在快马加鞭地开发中",1500)
+      }
+    }
   }
 </script>
 
